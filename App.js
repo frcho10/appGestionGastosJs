@@ -9,6 +9,7 @@ import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
 import { store, persistor } from './redux/store'
+import { Platform } from 'react-native';
 
 
 export default function App() {
@@ -19,7 +20,7 @@ export default function App() {
         //  <NativeRouter> {/* ESTE COMPONENTE ENGLOBA TODO EL ROUTES REEMPLAZA EL BROWSER ROUTER EN WEB */}
           //  <IconRegistry icons={EvaIconsPack} />{/* COMPONENTE PARA USAR ICONOS EN UI KITTEN SE LE MANDA POR PROP EL PAQUETE DE EVA ICONS */}
             //  <ApplicationProvider {...eva} theme={eva.light}> ESTO ES DE LA CONFIG INICIAL PARA UI KITTEN
-    <SafeAreaView style={{flex:1}}>
+    <SafeAreaView style={{flex:1, paddingTop: Platform.OS==="android"?25:0}}>
       <PersistGate persistor={persistor}>
         <Provider store={store}>
           <NativeRouter>

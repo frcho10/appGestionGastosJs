@@ -4,6 +4,7 @@ import { StyleSheet , View, Text} from 'react-native';
 import { useNavigate } from 'react-router';
 import { useEffect, } from 'react';
 import { useSelector } from 'react-redux';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
  function TemplateMenu({children, TabSelected}){
 
@@ -12,6 +13,7 @@ import { useSelector } from 'react-redux';
   const cards = useSelector(state => state.cards.cards)
 
   const goToTab = (id) => {
+    setSelectedIndex(id)
     switch (id) {
         case 0:
           navigate('/');
@@ -42,46 +44,52 @@ import { useSelector } from 'react-redux';
             })
     }
 
-    const iconAddSpent = (props) => (
+    // const iconAddSpent = (props) => (
         
-        <Icon name='plus-circle-outline' {...props}/>
-    )
+    //     <Icon name='plus-circle-outline' {...props}/>
+    // )
 
     const iconSaldo = (props) => (
         
-        <Icon name='file-text-outline' {...props} />
+        // <Icon name='file-text-outline' {...props} />
+        <FontAwesome5 name='chart-bar' color={selectedIndex==0 ? '#0469ee' : '#9ea6b0'} size={20}/>
     )
 
     const iconIngreso = (props) => (
         
-        <Icon name='trending-up-outline' {...props} />
+        // <Icon name='trending-up-outline' {...props} />
+        <FontAwesome5 name='donate' color={selectedIndex==1 ? '#0469ee' : '#9ea6b0'} size={20}/>
     )
 
     const iconTarjetas = (props) => (
         
-        <Icon name='credit-card-outline' {...props} />
+        // <Icon name='credit-card-outline' {...props} />
+        <FontAwesome5 name='credit-card' color={selectedIndex==2 ? '#0469ee' : '#9ea6b0'} size={20}/>
     )
   return (
     <>
-    <View style={styles.containerMain}>
+    <View >
 
     {children}
     
     
     
         
+    {/* <Button accessoryLeft={iconAddSpent} onPress={pressAddSpent}> Añadir gasto</Button> */}
     </View>
-    <Button accessoryLeft={iconAddSpent} onPress={pressAddSpent}> Añadir gasto</Button>
+    <View style={styles.footer}>
     <Divider />
+
     <BottomNavigation
             selectedIndex={selectedIndex}
             onSelect={index => goToTab(index)}
             appearance='noIndicator'
             >
-            <BottomNavigationTab key={0} title='Saldo' icon={iconSaldo}/>
+            <BottomNavigationTab key={0} title='Saldo' icon={iconSaldo} />
             <BottomNavigationTab key={1} title='Ingresos' icon={iconIngreso} />
             <BottomNavigationTab key={2} title='Tarjetas' icon={iconTarjetas} />
         </BottomNavigation>
+    </View>
     </>
   );
 };
@@ -95,6 +103,9 @@ var styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
       },
+    footer: {
+        position: 'absolute', left: 0, right: 0, bottom: 25
+    }
 });
 
 
