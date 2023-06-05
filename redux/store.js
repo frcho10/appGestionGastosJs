@@ -9,7 +9,7 @@ import cardsReducer from "./entities/cards";
 const persistConfig = {
     key: 'root',
     storage: AsyncStorage,
-    whitelist: [],
+    whitelist: ['cards'],
 }
 
 const rootReducer = combineReducers({

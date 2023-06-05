@@ -68,7 +68,7 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
     )
   return (
     <>
-    <View >
+    <View style={{paddingVertical: 10, paddingHorizontal:15}}>
 
     {children}
     

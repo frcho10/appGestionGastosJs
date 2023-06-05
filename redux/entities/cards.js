@@ -40,6 +40,11 @@ export const cardsReducer = createSlice({
             state.cards ={};
             state.isLoading= false;
             state.error= "";
+        },
+        addCard: (state, action) => {
+            console.log("nuevo card",action.payload)
+            console.log("cards actuales, ",...state.cards)
+            state.cards = [...state.cards, action.payload]
         }
     },
     // extraReducers: (builder) => {
@@ -62,5 +67,5 @@ export const cardsReducer = createSlice({
 
 
 
-export const { clearInfoCards, setCards } = cardsReducer.actions;
+export const { clearInfoCards, setCards, addCard } = cardsReducer.actions;
 export default cardsReducer.reducer;
