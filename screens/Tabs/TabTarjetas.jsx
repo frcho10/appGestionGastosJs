@@ -93,6 +93,7 @@ const TabTarjetas = () => {
                     renderItem={renderItem}
                     />
                 </Card>
+                <Text>  </Text>
                 <Button accessoryLeft={iconAddCard} onPress={pressAddSpent}> Añadir Tarjeta</Button>
 
                 <Modal visible= {visible} animationType='slide'>
